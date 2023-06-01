@@ -1,4 +1,6 @@
 import React from "react";
+import "./Fighter.css";
+
 
 function Fighters({ fighters }) {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Countdown from "react-countdown";
 import Fighters from "../Fighters/Fighter";
-import "./Countdown.css"
+import "./Countdown.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -53,9 +53,10 @@ function CountdownTimer() {
 
   return (
     <div className="Container">
-      <h1 className="text-center mb-4">Cronómetro</h1>
+      <h1 className="text-center display-1 font-weight-bold">Cronómetro</h1>
       <div className="row justify-content-center text-center">
         <Countdown
+          className="timer"
           ref={countdownRef}
           date={Date.now() + 120000}
           autoStart={isTimerRunning}
