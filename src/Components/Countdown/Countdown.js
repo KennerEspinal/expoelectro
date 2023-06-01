@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Countdown from "react-countdown";
 import Fighters from "../Fighters/Fighter";
+import "./Countdown.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -51,8 +52,8 @@ function CountdownTimer() {
   }, []);
 
   return (
-    <div className="Cronometro">
-      <h1 className="text-center mb-4">Timer</h1>
+    <div className="Container">
+      <h1 className="text-center mb-4">Cronómetro</h1>
       <div className="row justify-content-center text-center">
         <Countdown
           ref={countdownRef}
@@ -81,7 +82,7 @@ function CountdownTimer() {
           <FontAwesomeIcon icon={faUndo} /> Reset
         </button>
       </div>
-      <h2 className="text-center mt-4 mb-2">Current Fighters:</h2>
+      <h2 className="text-center mt-4 mb-2">Peleadores actuales:</h2>
       <Fighters fighters={fighters} />
     </div>
   );
