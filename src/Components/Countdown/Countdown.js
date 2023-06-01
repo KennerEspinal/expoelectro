@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Countdown from "react-countdown";
-import Fighters from "../Fighters/Figther";
+import Fighters from "../Fighters/Fighter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -16,14 +16,14 @@ function CountdownTimer() {
   const countdownRef = useRef(null);
 
   const handlePlayPause = () => {
-    setIsTimerRunning((prevState) => !prevState);
-    setIsPaused((prevState) => !prevState);
+    setIsTimerRunning(!isTimerRunning);
+    setIsPaused(!isPaused);
   };
 
   const handleReset = () => {
     if (countdownRef.current) {
-      countdownRef.current.api.stop();
-      countdownRef.current.api.start();
+      countdownRef.current.getApi().stop();
+      countdownRef.current.getApi().start();
       setIsTimerRunning(true);
       setIsPaused(false);
     }
@@ -31,14 +31,13 @@ function CountdownTimer() {
 
   const handleStop = () => {
     if (countdownRef.current) {
-      countdownRef.current.api.stop();
+      countdownRef.current.getApi().stop();
       setIsTimerRunning(false);
       setIsPaused(false);
     }
   };
 
   useEffect(() => {
-    // Obtener luchadores de la API
     fetch("https://6438098cc1565cdd4d647cb0.mockapi.io/users")
       .then((res) => res.json())
       .then((data) => {
@@ -60,6 +59,12 @@ function CountdownTimer() {
           date={Date.now() + 120000}
           autoStart={isTimerRunning}
           controlled={false}
+          onPause={() => setIsPaused(true)}
+          onResume={() => setIsPaused(false)}
+          onComplete={() => {
+            setIsTimerRunning(false);
+            setIsPaused(false);
+          }}
         />
       </div>
       <div className="row justify-content-center mt-2">
