@@ -1,13 +1,13 @@
 import React from "react";
 
-function Fighters(props) {
+function Fighters({ fighters }) {
   return (
-    <div>
-      {props.fighters.map((fighter, index) => (
-        <p key={index}>{fighter}</p>
+    <ul>
+      {fighters.map((fighter, index) => (
+        <p className="text-center" key={index}>{fighter}</p>
       ))}
-    </div>
+    </ul>
   );
 }
 
-export default Fighters
+export default Fighters;
